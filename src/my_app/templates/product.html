@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{% if category %}{{ category.title }}{% else %}Товары{% endif %}
+{% endblock %}
+{% block content %}
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="https://jetexcdn.sfo2.cdn.digitaloceanspaces.com/jetex.com/wp-content/uploads/2020/02/Paris-Fashion-Week-scaled.jpg" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="https://i.ytimg.com/vi/BZ3DCJfJSXU/maxresdefault.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="https://fashionmagazine.com/wp-content/uploads/2020/02/2020-02-11-1.jpg" alt="Third slide">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+<div id="sidebar">
+    <h3>Категория</h3>
+    <ul>
+        <li {% if not category %}class="selected"{% endif %}>
+            <a href="{% url 'my_app:product_list' %}">Все</a>
+        </li>
+        {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+            <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- <h3>Бренды</h3>
+    <ul>
+        <li {% if not brand %}class="selected"{% endif %}>
+            <a href="{% url 'my_app:product_list' %}">Все</a>
+        </li>
+        {% for b in brands %}
+        <li {% if brand.slug == b.slug %}class="selected" {% endif %}>
+            <a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+        </li>
+        {% endfor %}
+    </ul> -->
+</div>
+<div id="main" class="product-list">
+    <h1>{% if category %}{{ category.title }}{% else %}Товар{% endif %}</h1>
+    {% for product in products %}
+    <div class="item">
+        <a href="{{ product.get_absolute_url }}">
+            <img src="{% if product.image %}{{ product.image.url }}{%else %}{% static 'img/no_image.png' %}{% endif %}">
+        </a>
+        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+        <br>
+        ${{ product.price }}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

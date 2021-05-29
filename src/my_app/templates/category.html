@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block content %}
+
+<div class="product-detail">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}
+    {% static 'img/no_image.png' %}{% endif %}">
+    <h1>{{ product.title }}</h1>
+    <h2>
+        <a href="{{ product.category.get_absolute_url }}">{{product.category }}</a>
+    </h2>
+    <h2>
+        {{product.brand }}
+    </h2>
+    <p class="price">${{ product.price }}</p>
+    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type='submit' value='в корзину'>
+    </form>
+      
+{{ product.body|linebreaks }}
+    <div class="review">
+        <h4>Отзывы</h4>
+        {% for review in reviews%}
+            <ul>{{ review.customer_name }}
+                <li>{{ review.description }}</li>
+            </ul>
+        {% endfor %}
+        <a href="{% url 'my_app:review_create' product.id %}" method="POST">Оставить отзыв</a>    
+    </div>  
+</div>
+{% endblock %}
