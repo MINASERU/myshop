@@ -39,12 +39,9 @@ def product_cart_bot(request):
     cart = Cart(request)
     products_message = ''
     for product in cart:
-        a = Product.objects.get(id=product['id'])
-        products_message = products_message + f'{a.title}, {a.price}' + '\n'
+        print(product)
+        a = Product.objects.get(id=product['product'].id)
+        products_message = products_message + f'{a.title}, {a.price}$' + '\n'
     res = requests.get(
         settings.URL+f'{products_message}')
-    return Response({
-            'success': True,
-            'data': 'Order sent'},
-            status.HTTP_201_CREATED
-        )
+    return redirect('my_app:product_list')

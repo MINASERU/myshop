@@ -12,16 +12,16 @@ h1, h2, h3, h4, h5 , h6 {
 
 a {
     text-decoration:none;
-    color:#b39d63;
+    color:#bdaa86;
 }
 
 a:hover {
-    color:#ad9f5c;
+    color:#bdaa86;
 }
 
 a.button, input[type="submit"] {
     color:#fff;
-    background:#ad9f5c;
+    background:#bdaa86;
     border-radius:4px;
     padding:10px 20px;
     font-size:14px;
@@ -63,7 +63,7 @@ tbody tr.subtotal {
 }
 
 thead th, tbody tr.total {
-    background:#ad9f5c;
+    background:#bdaa86;
     color:#fff;
     font-weight:bold;
 }
@@ -316,21 +316,8 @@ ul.errorlist {
     width:120px;
 }
 
-/* braintree hosted fields */
-/* form div.field {
-    font-size:13px;
-    color:#666;
-    width:300px;
-    height:22px;
-    margin-bottom:10px;
-    padding:6px 12px;
-    border:0;
-    background:#efefef;
-    color:#666;
-    border-radius:4px;
-} */
 .logo {
-    line-height: 60px;
+    line-height: 50px;
     position: fixed;
     float: left;
     margin: 16px 46px;
@@ -361,13 +348,9 @@ nav ul {
     transition: 1s;
 }
 
-/* nav.black ul {
-    background: #000;
-} */
-
 nav ul li {
     display: inline-block;
-    padding: 16px 40px;;
+    padding: 16px 30px;;
 }
 
 nav ul li a {
@@ -396,39 +379,6 @@ header {
     display: none;
 }
 
-/* @media(max-width: 786px) { */
-/* 
-    .logo {
-          position: fixed;
-          top: 0;
-          margin-top: 16px;
-    }
-
-    nav ul {
-          max-height: 0px;
-          background: #000;
-    }
-
-    nav.black ul {
-          background: #000;
-    }
-
-    .showing {
-          max-height: 34em;
-    }
-
-    nav ul li {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 24px;
-          text-align: center;
-    }
-
-    .menu-icon {
-          display: block;
-    }
-
-} */
 html, body {
     margin: 0;
     padding: 0;

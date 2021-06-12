@@ -6,7 +6,12 @@
 {% endblock %}
 
 {% block content %}
+<br>
+<br>
+<br>
+<br>
   <h1>Корзина покупок</h1>
+  <br>
   <table class="cart">
     <thead>
       <tr>
@@ -57,4 +62,5 @@
     <a href="{% url 'my_app:product_list' %}" class="button light">В магазин</a>
     <a href="{% url 'cart:order' %}" class="button">Оформить заказ</a>
   </p>
+  <br>
 {% endblock %}

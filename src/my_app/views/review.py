@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from my_app.forms import ReviewForm
-from my_app.models import Review
-# from django.conf import settings
-# import requests
+from my_app.models import Review, Product
 
 def review_create(request, product_id):
     error = ''

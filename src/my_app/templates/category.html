@@ -4,7 +4,10 @@
 {{ product.name }}
 {% endblock %}
 {% block content %}
-
+<br>
+<br>
+<br>
+<br>
 <div class="product-detail">
     <img src="{% if product.image %}{{ product.image.url }}{% else %}
     {% static 'img/no_image.png' %}{% endif %}">
@@ -21,16 +24,43 @@
         {% csrf_token %}
         <input type='submit' value='в корзину'>
     </form>
-      
+
 {{ product.body|linebreaks }}
-    <div class="review">
-        <h4>Отзывы</h4>
-        {% for review in reviews%}
-            <ul>{{ review.customer_name }}
-                <li>{{ review.description }}</li>
-            </ul>
-        {% endfor %}
-        <a href="{% url 'my_app:review_create' product.id %}" method="POST">Оставить отзыв</a>    
-    </div>  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3>Отзывы</h3>
+<br>
+{% for review in reviews %}
+<div class="card">
+    <div class="card-header">
+        <h4>{{ review.customer_name }}</h4>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{ review.description }}</p>
+        <footer class="blockquote-footer">{{ review.created }}</footer>
+      </blockquote>
+    </div>
+</div>
+{% endfor %}
+<br>
+<button type="button" class="btn btn-outline-secondary"><a href="{% url 'my_app:review_create' product.id %}" method="POST">Оставить отзыв</a></button>
+<br>
+<br>
 </div>
 {% endblock %}
